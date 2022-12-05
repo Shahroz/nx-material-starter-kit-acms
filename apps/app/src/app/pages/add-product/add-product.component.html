@@ -1,0 +1,53 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <h1>Add Product</h1>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" placeholder="Title" formControlName="title" required />
+      <ng-container [ngTemplateOutlet]="errorTempRef"
+                    [ngTemplateOutletContext]="{label: 'Title', control: productForm.get('title')}">
+      </ng-container>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" min="0" placeholder="Price" formControlName="price" required />
+      <ng-container [ngTemplateOutlet]="errorTempRef"
+                    [ngTemplateOutletContext]="{label: 'Price', control: productForm.get('price')}">
+      </ng-container>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select placeholder="Category" formControlName="category" required>
+        <mat-option [value]="category" *ngFor="let category of categoryList$ | async">
+          {{category}}
+        </mat-option>
+      </mat-select>
+      <ng-container [ngTemplateOutlet]="errorTempRef"
+                    [ngTemplateOutletContext]="{label: 'Category', control: productForm.get('category')}">
+      </ng-container>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" placeholder="Description" formControlName="description" required />
+      <ng-container [ngTemplateOutlet]="errorTempRef"
+                    [ngTemplateOutletContext]="{label: 'Description', control: productForm.get('description')}">
+      </ng-container>
+    </mat-form-field>
+  </div>
+  <div>
+    <button type="submit" mat-raised-button color="primary"
+            [disabled]="productForm.invalid || submitting">
+      Submit
+    </button>
+  </div>
+</form>
+
+<ng-template #errorTempRef let-label="label" let-control="control">
+  <mat-error *ngIf="control!.invalid">{{label}} is invalid</mat-error>
+</ng-template>

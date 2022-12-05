@@ -1,0 +1,24 @@
+<mat-list role="list" class="mat-elevation-z8">
+  <h1>Product List {{category ? (' - ' + category) : ''}}</h1>
+  <ng-container *ngIf="showCategoryList">
+    <lowgular-acms-category-list (categoryChange)="goToCategoryProductPage($event)"></lowgular-acms-category-list>
+  </ng-container>
+  <ng-container *ngIf="showSorting">
+    <mat-form-field appearance="fill">
+      <mat-label>Sort by price</mat-label>
+      <mat-select (selectionChange)="fetchAllProducts($event.target)">
+        <mat-option value="asc">Low to high</mat-option>
+        <mat-option value="desc">High to low</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+  <mat-list-item role="listitem" *ngFor="let product of productList$ | async">
+    {{product.title}} {{product.price}}
+    <ng-container *ngIf="showDeleteBtn">
+      <button mat-fab color="primary" aria-label="Click to delete this product"
+              (click)="removeProduct(product.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </ng-container>
+  </mat-list-item>
+</mat-list>

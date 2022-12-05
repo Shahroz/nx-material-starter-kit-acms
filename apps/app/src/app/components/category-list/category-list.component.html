@@ -1,0 +1,7 @@
+<mat-chip-listbox aria-label="Category selection"
+                  (change)="categoryChange.emit($event)">
+  <mat-chip-option *ngFor="let category of categoryList$ | async;"
+    [removable]="false">
+    {{category}}
+  </mat-chip-option>
+</mat-chip-listbox>
