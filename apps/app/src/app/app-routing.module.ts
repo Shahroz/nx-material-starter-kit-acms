@@ -1,9 +1,10 @@
 import {NgModule} from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
+import { PRODUCT_LIST } from './constants/route-list';
 
 const routes: Routes = [
   {
-    path: 'products',
+    path: PRODUCT_LIST,
     loadChildren: () => import('./pages/products/products.module')
       .then(m => m.ProductsModule)
   }, {
@@ -16,15 +17,18 @@ const routes: Routes = [
       .then(m => m.ProductDetailsModule)
   }, {
     path: ':category/products',
-    loadChildren: () => import('./pages/products/products.module')
-      .then(m => m.ProductsModule),
+    loadChildren: () => import('./pages/category-products/category-products.module')
+      .then(m => m.CategoryProductsModule),
+  }, {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'products',
   }
 ];
 @NgModule({
-  imports: [RouterModule.forRoot([])],
-  providers: [],
-  declarations: [],
-  exports: []
+  imports: [
+    RouterModule.forRoot(routes)
+  ]
 })
 export class AppRoutingModule {
 }

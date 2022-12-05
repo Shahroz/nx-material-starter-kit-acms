@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './category-products.component.html',
 })
 export class CategoryProductsComponent {
-  public category: string | null = this._activatedRoute.snapshot.paramMap.get('id');
+  public category: string | null = this._activatedRoute.snapshot.paramMap.get('category');
 
   constructor(
     private _activatedRoute: ActivatedRoute,

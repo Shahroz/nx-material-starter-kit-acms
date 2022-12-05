@@ -10,7 +10,7 @@ import { ProductService } from '../../services';
   templateUrl: './product-details.component.html',
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
-  public product !: IProduct;
+  public product: IProduct | null = null;
 
   private _onDestroy$: Subject<void> = new Subject<void>();
 

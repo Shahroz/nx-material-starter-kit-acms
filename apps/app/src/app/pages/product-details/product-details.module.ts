@@ -4,12 +4,14 @@ import {RouterModule} from "@angular/router";
 
 import {ProductDetailsComponent} from './product-details.component';
 import { ProductServiceModule } from '../../services/product-service.module';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [ProductDetailsComponent],
   imports: [
     CommonModule,
     RouterModule,
+    MatCardModule,
     ProductServiceModule,
   ],
 })

@@ -11,7 +11,7 @@ import { CategoryService, ProductService } from '../../services';
   templateUrl: './add-product.component.html',
 })
 export class AddProductComponent implements OnInit, OnDestroy {
-  public productListRoute: string = PRODUCT_LIST;
+  public productListRoute: string = `/${PRODUCT_LIST}`;
 
   public submitting: boolean = false;
   public categoryList$: Observable<string[]> = of([]);

@@ -11,7 +11,7 @@ import { ProductService } from '../../services';
   templateUrl: './product-list.component.html',
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  @Input() category !: string;
+  @Input() category: string | null = null;
   @Input() showSorting: boolean = true;
   @Input() showDeleteBtn: boolean = false;
   @Input() showCategoryList: boolean = true;
@@ -36,11 +36,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this._onDestroy$.complete();
   }
 
-  removeProduct(id: number): void {
-    this._productService.delete(id)
-      .pipe(
-        takeUntil(this._onDestroy$)
-      ).subscribe();
+  removeProduct(id?: number): void {
+    if (id) {
+      this._productService.delete(id)
+        .pipe(
+          takeUntil(this._onDestroy$)
+        ).subscribe();
+    }
   }
 
   goToCategoryProductPage(category: string): void {
