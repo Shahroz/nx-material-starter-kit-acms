@@ -49,5 +49,5 @@
 </form>
 
 <ng-template #errorTempRef let-label="label" let-control="control">
-  <mat-error *ngIf="control!.invalid">{{label}} is invalid</mat-error>
+  <mat-error *ngIf="control!.invalid && (control!.touched || control!.dirty)">{{label}} is invalid</mat-error>
 </ng-template>

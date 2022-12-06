@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {AddProductComponent} from './add-product.component';
 import { ProductServiceModule } from '../../services/product-service.module';
+import { CategoryServiceModule } from '../../services/category-service.module';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
     MatSelectModule,
     MatFormFieldModule,
     ProductServiceModule,
+    CategoryServiceModule,
     RouterModule.forChild(routes),
   ],
 })
