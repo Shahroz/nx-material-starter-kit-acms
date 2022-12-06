@@ -1,7 +1,6 @@
-<mat-chip-list aria-label="Category selection"
-                  (change)="categoryChange.emit($event.value)">
+<mat-chip-list aria-label="Category selection" [selectable]="true">
   <mat-chip *ngFor="let category of categoryList$ | async;"
-    [removable]="false">
+    [removable]="false" (click)="categoryChange.emit(category);">
     {{category}}
   </mat-chip>
 </mat-chip-list>

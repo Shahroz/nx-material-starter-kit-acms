@@ -6,6 +6,7 @@ import { CategoryService } from '../../services';
 @Component({
   selector: 'lowgular-acms-category-list',
   templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
   public categoryList$: Observable<string[]> = of([]);

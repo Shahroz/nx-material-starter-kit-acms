@@ -1,21 +1,26 @@
-<mat-list role="list" class="mat-elevation-z8">
+<mat-list role="list" class="product-list">
   <h1>Product List {{category ? (' - ' + category) : ''}}</h1>
   <ng-container *ngIf="showCategoryList">
-    <lowgular-acms-category-list (categoryChange)="goToCategoryProductPage($event)"></lowgular-acms-category-list>
+    <lowgular-acms-category-list (categoryChange)="goToProductPage($event)"></lowgular-acms-category-list>
   </ng-container>
   <ng-container *ngIf="showSorting">
-    <mat-form-field appearance="fill">
-      <mat-label>Sort by price</mat-label>
-      <mat-select (selectionChange)="fetchAllProducts($event.value)">
-        <mat-option value="asc">Low to high</mat-option>
-        <mat-option value="desc">High to low</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="sorting-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Sort by price</mat-label>
+        <mat-select (selectionChange)="sortOrder = $event.value"
+          [value]="sortOrder">
+          <mat-option value="asc">Low to high</mat-option>
+          <mat-option value="desc">High to low</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </ng-container>
-  <mat-list-item role="listitem" *ngFor="let product of productList$ | async">
-    {{product.title}} {{product.price}}
+  <mat-list-item role="listitem" *ngFor="let product of productList$ | async | productSortPipe: sortOrder:'price': 'number'">
+    <a routerLink="/product/{{product?.id}}">
+      {{product.title}} {{product.price}}
+    </a>
     <ng-container *ngIf="showDeleteBtn">
-      <button mat-fab color="primary" aria-label="Click to delete this product"
+      <button mat-icon-button color="warn" aria-label="Click to delete this product"
               (click)="removeProduct(product?.id)">
         <mat-icon>delete</mat-icon>
       </button>

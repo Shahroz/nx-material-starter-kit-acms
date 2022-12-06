@@ -1,0 +1,9 @@
+:host {
+  ::ng-deep {
+    .mat-chip {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

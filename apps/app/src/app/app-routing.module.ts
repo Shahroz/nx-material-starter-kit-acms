@@ -1,5 +1,6 @@
-import {NgModule} from "@angular/core";
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { PRODUCT_LIST } from './constants/route-list';
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
   }, {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'products',
+    redirectTo: PRODUCT_LIST,
   }
 ];
 @NgModule({

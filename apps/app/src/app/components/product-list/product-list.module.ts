@@ -8,8 +8,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { ProductListComponent } from './product-list.component';
-import { ProductServiceModule } from '../../services/product-service.module';
 import { CategoryListModule } from '../category-list/category-list.module';
+import { ProductServiceModule } from '../../services/product-service.module';
+import { ProductSortModule } from '../../pipes/product-sort/product-sort.module';
 
 @NgModule({
   declarations: [ProductListComponent],
@@ -21,6 +22,7 @@ import { CategoryListModule } from '../category-list/category-list.module';
     MatIconModule,
     MatSelectModule,
     MatFormFieldModule,
+    ProductSortModule,
     CategoryListModule,
     ProductServiceModule,
   ],

@@ -4,13 +4,16 @@ import { ActivatedRoute } from '@angular/router';
 
 import { IProduct } from '../../models';
 import { ProductService } from '../../services';
+import { PRODUCT_LIST } from '../../constants/route-list';
 
 @Component({
   selector: 'lowgular-acms-product-details',
   templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit, OnDestroy {
   public product: IProduct | null = null;
+  public productListRoute: string = PRODUCT_LIST;
 
   private _onDestroy$: Subject<void> = new Subject<void>();
 

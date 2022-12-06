@@ -12,14 +12,9 @@ export class ProductService {
   constructor(private _httpClient: HttpClient) {
   }
 
-  getAll(requestInfo: {
-    path?: string, params?: HttpParams
-  } = {path: undefined, params: new HttpParams()}): Observable<IProduct[]> {
+  getAll(path?: string): Observable<IProduct[]> {
     return this._httpClient.get<IProduct[]>(
-      this.getFormattedApiUrl(requestInfo.path),
-      {
-        params: requestInfo.params
-      }
+      this.getFormattedApiUrl(path)
     );
   }
 

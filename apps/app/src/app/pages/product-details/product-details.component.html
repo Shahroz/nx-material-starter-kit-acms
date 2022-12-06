@@ -1,15 +1,23 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      <h1>Product {{product?.id}}</h1>
-    </mat-card-title>
-  </mat-card-header>
-  <ng-container *ngIf="product?.image">
-    <img mat-card-image [src]="product?.image" [attr.alt]="product?.title" />
-  </ng-container>
-  <mat-card-content>
-    <h2>{{ product?.title }}</h2>
-    <span>Price {{product?.price || '-'}}</span>
-    <p>{{product?.description}}</p>
-  </mat-card-content>
-</mat-card>
+<div class="product-details">
+  <div class="link-back-container">
+    <a mat-icon-button [routerLink]="'/' + productListRoute">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    Product List
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h1>Product {{product?.id}}</h1>
+      </mat-card-title>
+    </mat-card-header>
+    <ng-container *ngIf="product?.image">
+      <img mat-card-image [src]="product?.image" [attr.alt]="product?.title" />
+    </ng-container>
+    <mat-card-content>
+      <h2>{{ product?.title }}</h2>
+      <span>Price {{product?.price || '-'}}</span>
+      <p>{{product?.description}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
